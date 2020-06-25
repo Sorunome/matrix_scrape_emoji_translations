@@ -5,8 +5,10 @@ const REACT_SDK_PATH = "/home/sorunome/repos/matrix-react-sdk";
 const translationsPath = "/src/i18n/strings";
 const emojiFile = "./sas-emoji.json";
 const outFile = "./sas-emoji-translations.json";
+const outFileLang = "./sas-emoji-languages.json";
 
 const out = {};
+const languages = [];
 
 const emoji = JSON.parse(fs.readFileSync(emojiFile));
 
@@ -37,5 +39,7 @@ for (const f of dir) {
 		continue;
 	}
 	out[lang] = translation;
+	languages.push(lang);
 }
 fs.writeFileSync(outFile, JSON.stringify(out));
+fs.writeFileSync(outFileLang, JSON.stringify(languages));
