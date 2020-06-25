@@ -82,11 +82,32 @@ function getEmoteRiotX(lang, str) {
 	}
 }
 
+function allRiotXLangs() {
+	const langs = [];
+	const dir = fs.readdirSync(RIOT_X_PATH + riotXTranslationsPath);
+	for (const f of dir) {
+		if (!f.startsWith("values-")) {
+			continue;
+		}
+		let lang = f.replace("values-", "");
+		lang = lang.replace("-r", "_");
+		const langMap = {
+			"en_GB": "en_EN",
+		};
+		lang = langMap[lang] || lang;
+		langs.push(lang);
+	}
+	langs.push("en_US");
+	return langs;
+}
+
 function getEmote(lang, str) {
 	return getEmoteReactSdk(lang, str) || getEmoteRiotX(lang, str);
 }
 
-const langs = allReactSdkLangs();
+const langs = new Set();
+allReactSdkLangs().forEach((l) => langs.add(l));
+allRiotXLangs().forEach((l) => langs.add(l));
 for (const lang of langs) {
 	const translation = [];
 	for (const e of emoji) {
