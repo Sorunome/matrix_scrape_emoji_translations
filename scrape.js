@@ -23,6 +23,11 @@ function getEmoteReactSdk(lang, str) {
 	if (str === "Light Bulb") {
 		str = "Light bulb";
 	}
+	const langMap = {
+		"zh_TW": "zh_Hant",
+		"zh_CN": "zh_Hans",
+	};
+	lang = langMap[lang] || lang;
 	if (!reactSdkCache[lang]) {
 		let file;
 		try {
@@ -43,6 +48,11 @@ function allReactSdkLangs() {
 			continue;
 		}
 		let lang = f.replace(".json", "");
+		const langMap = {
+			"zh_Hant": "zh_TW",
+			"zh_Hans": "zh_CN",
+		};
+		lang = langMap[lang] || lang;
 		langs.push(lang);
 	}
 	return langs;
@@ -133,6 +143,6 @@ for (const lang of langs) {
 	languages.push(lang);
 }
 
-console.log("Languages:", languages);
+console.log("Languages (" + languages.length + "):", languages);
 fs.writeFileSync(outFile, JSON.stringify(out));
 fs.writeFileSync(outFileLang, JSON.stringify(languages));
