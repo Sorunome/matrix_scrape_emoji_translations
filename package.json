@@ -1,0 +1,23 @@
+{
+  "name": "scrape_emoji",
+  "version": "0.0.0",
+  "description": "",
+  "main": "scrape.js",
+  "dependencies": {
+    "xml2json": "^0.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sorunome/matrix_scrape_emoji_translations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sorunome/matrix_scrape_emoji_translations/issues"
+  },
+  "homepage": "https://github.com/Sorunome/matrix_scrape_emoji_translations#readme"
+}
